@@ -22,6 +22,7 @@ export default function Search({ params, setParams, users }: any) {
                     });
                 }}
             >
+                <option value='' >负责人</option>;
                 {users.map((item: any) => {
                     return <option value={item.id} key={item.id}>{item.name}</option>;
                 })}

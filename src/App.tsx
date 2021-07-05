@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Search from './components/search';
 import CustomTable from './components/table'
+import { clearObject, useMount, useDebounce } from './utils'
 import './App.css';
 import { useEffect } from 'react';
 import qs from 'qs'
@@ -12,7 +13,6 @@ type Params = {
     personId: string;
 };
 
-console.log('REACT_APP_URL===', process.env)
 
 function App() {
     const [params, setParams] = useState<Params>({
@@ -22,33 +22,32 @@ function App() {
 
     const [users, setUsers] = useState([]);
 
-    const [list, setList] = useState([])
+    const [list, setList] = useState([]);
+
+    const debounceParams = useDebounce(params, 5000)
 
     useEffect(
         ()=>{
-            fetch(`${REACT_APP_URL}/projects`)
+            fetch(`${REACT_APP_URL}/projects?${qs.stringify(clearObject(debounceParams))}`)
                 .then(async (res)=>{
                     if(res.ok){
                         setList(await res.json())
                     }
                 })
         },
-        [params]
+        [debounceParams]
     )
 
 
-    useEffect(
-        ()=>{
-            fetch(`${REACT_APP_URL}/users`)
+    useMount(()=>{
+        fetch(`${REACT_APP_URL}/users`)
             .then(async (res)=>{
                 console.log('res=', res)
                 if(res.ok){
                     setUsers(await res.json())
                 }
             })
-        },
-        []
-    )
+    })
 
     return (
         <div className="App">
