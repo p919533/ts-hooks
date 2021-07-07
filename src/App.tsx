@@ -1,66 +1,15 @@
 import React, { useState } from 'react';
-import Search from './components/search';
-import CustomTable from './components/table'
-import { clearObject, useMount, useDebounce } from './utils'
+import ProjectList from 'pages/project-list';
+import TsReactTest from 'pages/try-use-array';
+import Login from 'pages/login';
 import './App.css';
-import { useEffect } from 'react';
-import qs from 'qs'
-
-const REACT_APP_URL = process.env.REACT_APP_URL
-
-type Params = {
-    name: string;
-    personId: string;
-};
-
 
 function App() {
-    const [params, setParams] = useState<Params>({
-        name: '',
-        personId: ''
-    });
-
-    const [users, setUsers] = useState([]);
-
-    const [list, setList] = useState([]);
-
-    const debounceParams = useDebounce(params, 5000)
-
-    useEffect(
-        ()=>{
-            fetch(`${REACT_APP_URL}/projects?${qs.stringify(clearObject(debounceParams))}`)
-                .then(async (res)=>{
-                    if(res.ok){
-                        setList(await res.json())
-                    }
-                })
-        },
-        [debounceParams]
-    )
-
-
-    useMount(()=>{
-        fetch(`${REACT_APP_URL}/users`)
-            .then(async (res)=>{
-                console.log('res=', res)
-                if(res.ok){
-                    setUsers(await res.json())
-                }
-            })
-    })
-
     return (
         <div className="App">
-            <Search
-                params={params}
-                setParams={setParams}
-                users={users}
-                setUsers={setUsers}
-            />
-            <CustomTable 
-                users={users}
-                list={list}
-            />
+            {/* <ProjectList/> */}
+            {/* <TsReactTest /> */}
+            <Login />
         </div>
     );
 }

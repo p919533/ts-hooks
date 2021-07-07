@@ -1,6 +1,22 @@
-import { useState } from 'react';
 
-export default function Search({ params, setParams, users }: any) {
+
+export interface User {
+    id: string,
+    name: string
+}
+
+export type Params = {
+    name: string,
+    personId: string
+}
+interface SearchProps {
+    params: Params,
+
+    setParams: (params: SearchProps['params']) => void,
+    // 
+    users: User[]
+}
+export default function Search({ params, setParams, users }: SearchProps) {
     return (
         <>
             <input
@@ -23,7 +39,7 @@ export default function Search({ params, setParams, users }: any) {
                 }}
             >
                 <option value='' >负责人</option>;
-                {users.map((item: any) => {
+                {users.map((item) => {
                     return <option value={item.id} key={item.id}>{item.name}</option>;
                 })}
             </select>

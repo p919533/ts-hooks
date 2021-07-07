@@ -1,4 +1,16 @@
-export default function CustomTable({list, users}: any){
+import {User} from './search'
+interface Project{
+    id: number,
+    name: string,
+    personId: number,
+    organization: string,
+    created: number
+}
+interface CustomTableProps {
+    users: User[],
+    list: Project[]
+}
+export default function CustomTable({list, users}: CustomTableProps){
     return (
         <table >
             <thead>
