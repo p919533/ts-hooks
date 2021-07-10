@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Search from 'components/search';
 import CustomTable from 'components/table'
 import { clearObject, useMount, useDebounce } from 'utils'
@@ -6,7 +6,7 @@ import { Params } from 'components/search'
 import './App.css';
 import qs from 'qs'
 
-const REACT_APP_URL = process.env.REACT_APP_URL
+const REACT_APP_URL = process.env.REACT_APP_API_URL
 
 
 function ProjectList() {
