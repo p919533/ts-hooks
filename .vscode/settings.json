@@ -1,0 +1,10 @@
+{
+    "locale": "zh-CN",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "semi": false,
+    "prettier.singleQuote": true,
+    "prettier.proseWrap": "preserve",
+    "prettier.tabWidth": 4
+}

@@ -1,8 +1,14 @@
+import { Input, Select } from 'antd';
 import React from 'react'
 
 export interface User {
     id: string,
-    name: string
+    name: string,
+    email: string;
+    title: string;
+    organization: string;
+    token: string;
+  
 }
 
 export type Params = {
@@ -19,7 +25,7 @@ interface SearchProps {
 export default function Search({ params, setParams, users }: SearchProps) {
     return (
         <>
-            <input
+            <Input
                 value={params.name}
                 onChange={(ev) => {
                     setParams({
@@ -29,20 +35,20 @@ export default function Search({ params, setParams, users }: SearchProps) {
                 }}
             />
 
-            <select
+            <Select
                 value={params.personId}
-                onChange={(ev) => {
+                onChange={(personId) => {
                     setParams({
                         ...params,
-                        personId: ev.target.value
+                        personId
                     });
                 }}
             >
-                <option value='' >负责人</option>;
+                <Select.Option value='' >负责人</Select.Option>;
                 {users.map((item) => {
-                    return <option value={item.id} key={item.id}>{item.name}</option>;
+                    return <Select.Option value={item.id} key={item.id}>{item.name}</Select.Option>;
                 })}
-            </select>
+            </Select>
         </>
     );
 }

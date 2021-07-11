@@ -1,5 +1,8 @@
 import React from 'react'
+import { Table } from 'antd';
+
 import {User} from './search'
+import { render } from '@testing-library/react';
 interface Project{
     id: number,
     name: string,
@@ -13,25 +16,18 @@ interface CustomTableProps {
 }
 export default function CustomTable({list, users}: CustomTableProps){
     return (
-        <table >
-            <thead>
-                <tr>
-                    <th>团队</th>
-                    <th>人员</th>
-                </tr>
-            </thead>
-            <tbody>
+        <Table pagination={false} dataSource={list} columns={[
             {
-                list.map((item:any)=>{
-                    return (
-                        <tr key={item.id}>
-                            <td>{item.name}</td>
-                            <td>{users.find((u:any)=> u.id === item.personId)?.name || '未知'}</td>
-                        </tr>
-                    )
-                })
+                title:'团队',
+                dataIndex: 'name',
+                sorter:(a,b) => a.name.localeCompare(b.name)
+            },
+            {
+                title: '人员',
+                render(text, project){
+                    return users.find((u:any)=> u.id === project.personId)?.name || '未知'
+                }
             }
-            </tbody>
-        </table>
+        ]}/>
     );
 };

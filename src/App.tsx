@@ -1,14 +1,18 @@
 import React from "react";
-import Login from './pages/login'
+import UnauthenticatedApp from 'unauthenticated-app'
+import AuthenticatedApp from 'authenticated-app'
+import { useAuth } from 'context/auth-context'
 import "./App.css";
 
 
 function App() {
-  return (
-    <div className="App">
-      <Login/>
-    </div>
-  );
+    const { user } = useAuth()
+    return (
+        <div className="App">
+            {user ? <AuthenticatedApp/> : <UnauthenticatedApp />}
+            {/* <Register/> */}
+        </div>
+    );
 }
 
 export default App;

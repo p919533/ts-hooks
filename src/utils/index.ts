@@ -30,7 +30,6 @@ export const useDebounce = <D>(value: D, delay?: number) => {
         }, delay)
         // 每次在上一个useEffect处理完以后在运行
         return () => {
-            debugger
             return clearTimeout(timeout)
         }
     }, [value])
