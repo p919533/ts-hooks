@@ -27,7 +27,7 @@ export function login(params: { username: string; password: string }) {
             return handleUserResponse(await response.json())
         }
         else {
-            return Promise.reject(params)
+            return Promise.reject(await response.json())
         }
     });
 }
@@ -45,7 +45,7 @@ export function register(params: { username: string; password: string }) {
             return handleUserResponse(await response.json())
         }
         else {
-            return Promise.reject(params)
+            return Promise.reject(await response.json())
         }
     });
 }

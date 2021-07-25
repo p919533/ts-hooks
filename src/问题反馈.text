@@ -1,2 +1,15 @@
 1.Grid和Flexbox
 2.ts 高级用法https://www.jianshu.com/p/89cf614b135b
+3.// eslint-disable-next-line react-hooks/exhaustive-deps
+
+// todo ts操作符 工具类
+1. Partial
+https://blog.csdn.net/roamingcode/article/details/104111165
+2.typeof ??
+
+3.React.PropsWithChildren??
+    & 交叉类型
+
+
+// Parameters Partial Omit介绍
+// Utility Types-Pick、Exclude、Partial和Omit实现
