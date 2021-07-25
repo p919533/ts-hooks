@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Typography, Space } from "antd";
 import Search from "components/search";
 import CustomTable from "components/table";
-import { clearObject, useMount, useDebounce } from "utils";
+import { clearObject, useMount, useDebounce, useDocumentTitle } from "utils";
 import { Params } from "components/search";
 import { useHttp } from "utils/http";
 import styled from "@emotion/styled";
@@ -26,18 +26,7 @@ function ProjectList() {
 
     const { data: users } = useUsers();
 
-    // const client = useHttp();
-
-    // useEffect(() => {
-    //     client("projects", {
-    //         data: clearObject(debounceParams),
-    //     }).then(setList);
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [debounceParams]);
-
-    // useMount(() => {
-    //     client("users").then(setUsers);
-    // });
+    useDocumentTitle("项目列表");
 
     return (
         <Container className="App">

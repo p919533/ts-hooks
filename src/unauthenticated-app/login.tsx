@@ -8,8 +8,6 @@ function Login({ onError }: { onError: (error: Error) => void }) {
     const { user, login } = useAuth();
     const { run, isLoading } = useAsync(undefined, { throwOnError: true });
 
-    const values: any = undefined;
-
     async function handleSubmit(value: { username: string; password: string }) {
         // ev.preventDefault();
         // const username = (ev.currentTarget.elements[0] as HTMLInputElement)
@@ -25,7 +23,6 @@ function Login({ onError }: { onError: (error: Error) => void }) {
     }
     return (
         <Form onFinish={handleSubmit}>
-            {values.isError}
             {user ? ` 登录成功，用户名${user.name}` : null}
             <Form.Item
                 name="username"

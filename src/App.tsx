@@ -11,13 +11,13 @@ function App() {
     return (
         <div className="App">
             {/* 事件的错误不会捕获 ，ui的才会 */}
-            <button
+            {/* <button
                 onClick={() => {
                     throw new Error("错误");
                 }}
             >
                 错误捕获
-            </button>
+            </button> */}
             <ErrorBoundary fallbackRender={FullPageErrorFallback}>
                 {user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
             </ErrorBoundary>

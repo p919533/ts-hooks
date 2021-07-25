@@ -3,6 +3,7 @@ import { Table, TableProps } from "antd";
 
 import { User } from "./search";
 import dayjs from "dayjs";
+import { Link } from "react-router-dom";
 
 export interface Project {
     id: string;
@@ -26,6 +27,11 @@ export default function CustomTable({ users, ...props }: CustomTableProps) {
                     title: "名称",
                     dataIndex: "name",
                     sorter: (a, b) => a.name.localeCompare(b.name),
+                    render(value, project) {
+                        return (
+                            <Link to={String(project.id)}>{project.name}</Link>
+                        );
+                    },
                 },
                 {
                     title: "部门",

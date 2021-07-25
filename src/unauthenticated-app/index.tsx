@@ -6,11 +6,12 @@ import Register from "./register";
 import logo from "assets/logo.svg";
 import left from "assets/left.svg";
 import right from "assets/right.svg";
+import { useDocumentTitle } from "utils/index";
 
 export default function UnauthenticatedApp() {
     const [isRegister, setIsRegister] = useState(false);
     const [error, setError] = useState<Error | null>(null);
-    console.log("error===", error);
+    useDocumentTitle("请登录注册以继续");
     return (
         <Container>
             <Header />
